@@ -15,7 +15,7 @@ export function Logo({ lien = true }: { lien?: boolean }) {
     </span>
   );
   return lien ? (
-    <Link href="/" aria-label="Licences, retour à l'accueil" className="inline-flex py-2">
+    <Link href="/" aria-label="Licences, retour à l’accueil" className="inline-flex py-2">
       {contenu}
     </Link>
   ) : (
@@ -94,12 +94,12 @@ export function Coche({ className = "" }: { className?: string }) {
   );
 }
 
-/** Valeur légale encore inconnue : bien visible pour ne pas l'oublier. */
+/** Valeur légale encore inconnue : bien visible pour ne pas l’oublier. */
 export function ACompleter({ valeur, quoi }: { valeur: string | null | undefined; quoi: string }) {
   if (valeur) return <>{valeur}</>;
   return <mark className="rounded-sm bg-vermillon-fond px-1 font-mono text-[0.9em] text-vermillon-texte">[À COMPLÉTER : {quoi}]</mark>;
 }
 
-export function Conteneur({ children, etroit = false, className = "" }: { children: ReactNode; etroit?: boolean; className?: string }) {
+export function Conteneur({ children, etroit = false, className = "" }: { children?: ReactNode; etroit?: boolean; className?: string }) {
   return <div className={`mx-auto w-full px-4 sm:px-6 ${etroit ? "max-w-xl" : "max-w-5xl"} ${className}`}>{children}</div>;
 }

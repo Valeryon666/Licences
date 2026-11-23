@@ -1,5 +1,5 @@
 // Les logiciels les plus courants dans une PME, classés par fonction.
-// Les prix sont des moyennes indicatives par compte et par mois : l'utilisateur les corrige.
+// Les prix sont des moyennes indicatives par compte et par mois : l’utilisateur les corrige.
 
 export type FonctionId =
   | "messagerie"
@@ -13,7 +13,7 @@ export type FonctionId =
 
 export const FONCTIONS: Record<FonctionId, string> = {
   bureautique: "Bureautique et stockage",
-  messagerie: "Messagerie d'équipe",
+  messagerie: "Messagerie d’équipe",
   visio: "Visioconférence",
   projet: "Gestion de projet et notes",
   signature: "Signature électronique",
@@ -22,7 +22,7 @@ export const FONCTIONS: Record<FonctionId, string> = {
   motsdepasse: "Mots de passe",
 };
 
-/** Combien de comptes par défaut : toute l'entreprise, une partie, ou quelques personnes. */
+/** Combien de comptes par défaut : toute l’entreprise, une partie, ou quelques personnes. */
 export type Portee = "tous" | "equipe" | "quelques";
 
 export type Outil = {

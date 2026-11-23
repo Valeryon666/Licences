@@ -45,14 +45,20 @@ Vérification du paiement : le webhook Stripe est signé et vérifié côté ser
 | Vercel Web Analytics | Gratuit | Sans cookie, donc sans bandeau de consentement |
 | Nom de domaine | ~10 €/an, recommandé avant l'étape 9 | Crédibilité, et des emails qui n'arrivent pas en spam |
 
-## Décisions en attente
+## Décisions prises (23/11)
 
-1. Prix : 9 €/mois (demande initiale) ou 39 / 79 / 129 € selon la taille (recommandation)
-2. Direction design et tutoiement ou vouvoiement
-3. Statut juridique (SIRET) pour encaisser en réel
-4. Garantie : 30 jours, remboursement déclenché sous 48 h
-5. Inclure l'inventaire fait à la main à partir des relevés sous 48 h pour les premiers clients
+1. Prix : 39 / 79 / 129 €/mois selon la taille (jusqu'à 20 / 21-50 / 51-100 personnes), 79 € mise en avant
+2. Direction « relevé annoté » validée, vouvoiement
+3. SIRET 993 212 323 00022
+4. Garantie : 14 jours satisfait ou remboursé, remboursement lancé sous 48 h
+5. Inventaire fait à la main à partir des relevés, sous 48 h ouvrées, pour les premiers clients
+
+## Reste à fournir
+
+- Nom et prénom (ou raison sociale), adresse postale, email de contact public, ville du tribunal → `lib/entreprise.ts`
+- Confirmer : micro-entreprise et TVA non applicable (art. 293 B du CGI)
 
 ## Journal
 
-- 23/11 — Plan rédigé. Aucun code encore.
+- 23/11 — Plan rédigé.
+- 23/11 — Étapes 1 à 3 codées : accueil, 3 questions, résultat, avant-goût, paywall avec paiement Stripe intégré, webhook signé, accès signé, portail client, pages légales, 404, image de partage. Testé sur iPhone simulé. Reste : clés Stripe dans Vercel et paiement de test.

@@ -1,6 +1,6 @@
 import "server-only";
 
-// Envoi d'emails via Resend, sans dépendance. Tant que RESEND_API_KEY et EMAIL_FROM
+// Envoi d’emails via Resend, sans dépendance. Tant que RESEND_API_KEY et EMAIL_FROM
 // ne sont pas réglées, les emails sont seulement écrits dans les journaux Vercel.
 
 type Email = { a: string; sujet: string; texte: string; repondreA?: string };
@@ -18,10 +18,10 @@ export async function envoyerEmail({ a, sujet, texte, repondreA }: Email): Promi
       headers: { Authorization: `Bearer ${cle}`, "Content-Type": "application/json" },
       body: JSON.stringify({ from: de, to: [a], subject: sujet, text: texte, reply_to: repondreA }),
     });
-    if (!r.ok) console.error(`Resend a refusé l'email « ${sujet} »`, r.status, await r.text());
+    if (!r.ok) console.error(`Resend a refusé l’email « ${sujet} »`, r.status, await r.text());
     return r.ok;
   } catch (e) {
-    console.error(`Envoi impossible de l'email « ${sujet} »`, e);
+    console.error(`Envoi impossible de l’email « ${sujet} »`, e);
     return false;
   }
 }

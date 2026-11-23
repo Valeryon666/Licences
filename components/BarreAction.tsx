@@ -5,26 +5,32 @@ import { useEffect, useState } from "react";
 import { Fleche } from "./ui";
 
 /**
- * Bouton fixé en bas de l'écran sur mobile, à portée de pouce,
- * qui apparaît quand les boutons principaux de la page ne sont plus visibles.
+ * Bouton fixé en bas de l’écran sur mobile, à portée de pouce,
+ * qui apparaît dès qu’on a fait défiler la page et qu’aucun bouton principal n’est visible.
  */
 export function BarreAction({ href, libelle, cibles }: { href: string; libelle: string; cibles: string[] }) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const elements = cibles.map((id) => document.getElementById(id)).filter((e): e is HTMLElement => Boolean(e));
-    if (elements.length === 0) return;
-    const visibles = new Set<Element>();
-    const observateur = new IntersectionObserver((entrees) => {
-      for (const e of entrees) {
-        if (e.isIntersecting) visibles.add(e.target);
-        else visibles.delete(e.target);
-      }
-      const premier = elements[0].getBoundingClientRect();
-      setVisible(visibles.size === 0 && premier.bottom < 0);
-    });
-    elements.forEach((e) => observateur.observe(e));
-    return () => observateur.disconnect();
+    let image = 0;
+    const mettreAJour = () => {
+      image = 0;
+      const hauteur = window.innerHeight;
+      const unBoutonVisible = cibles.some((id) => {
+        const r = document.getElementById(id)?.getBoundingClientRect();
+        return Boolean(r && r.bottom > 0 && r.top < hauteur);
+      });
+      setVisible(window.scrollY > 480 && !unBoutonVisible);
+    };
+    const surDefilement = () => {
+      if (!image) image = requestAnimationFrame(mettreAJour);
+    };
+    window.addEventListener("scroll", surDefilement, { passive: true });
+    mettreAJour();
+    return () => {
+      window.removeEventListener("scroll", surDefilement);
+      cancelAnimationFrame(image);
+    };
   }, [cibles]);
 
   return (

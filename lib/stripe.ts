@@ -18,8 +18,8 @@ export function stripe(): Stripe {
 const prixEnCache = new Map<FormuleId, string>();
 
 /**
- * Retrouve le prix Stripe d'une formule grâce à sa lookup_key.
- * S'il n'existe pas encore (premier paiement en mode test, puis en mode réel),
+ * Retrouve le prix Stripe d’une formule grâce à sa lookup_key.
+ * S’il n’existe pas encore (premier paiement en mode test, puis en mode réel),
  * le produit et le prix sont créés automatiquement : rien à configurer à la main.
  */
 export async function prixStripe(id: FormuleId): Promise<string> {

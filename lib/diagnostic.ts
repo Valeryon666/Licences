@@ -1,4 +1,4 @@
-// Les trois questions du diagnostic et le calcul de l'estimation.
+// Les trois questions du diagnostic et le calcul de l’estimation.
 // Toutes les hypothèses sont ici, et affichées telles quelles sur la page de résultat.
 
 export type Option = { id: string; libelle: string; valeur: number };
@@ -13,8 +13,8 @@ export type Question = {
 export const QUESTIONS: Question[] = [
   {
     cle: "effectif",
-    titre: "Combien de personnes travaillent dans l'entreprise ?",
-    aide: "Comptez aussi les stagiaires, les alternants et les freelances : eux aussi ont des comptes payés par l'entreprise.",
+    titre: "Combien de personnes travaillent dans l’entreprise ?",
+    aide: "Comptez aussi les stagiaires, les alternants et les freelances : eux aussi ont des comptes payés par l’entreprise.",
     options: [
       { id: "moins-10", libelle: "Moins de 10", valeur: 7 },
       { id: "10-20", libelle: "10 à 20", valeur: 15 },
@@ -37,13 +37,13 @@ export const QUESTIONS: Question[] = [
   },
   {
     cle: "achats",
-    titre: "Qui peut souscrire un logiciel au nom de l'entreprise ?",
-    aide: "C'est comme ça que deux équipes finissent par payer deux outils qui font la même chose, sans le savoir.",
+    titre: "Qui peut souscrire un logiciel au nom de l’entreprise ?",
+    aide: "C’est comme ça que deux équipes finissent par payer deux outils qui font la même chose, sans le savoir.",
     options: [
       { id: "une-personne-liste", libelle: "Une seule personne, qui tient une liste à jour", valeur: 0 },
       { id: "une-personne", libelle: "Une seule personne, sans liste à jour", valeur: 1 },
-      { id: "responsables", libelle: "Chaque responsable d'équipe", valeur: 2 },
-      { id: "tout-le-monde", libelle: "N'importe qui, avec une carte ou une note de frais", valeur: 3 },
+      { id: "responsables", libelle: "Chaque responsable d’équipe", valeur: 2 },
+      { id: "tout-le-monde", libelle: "N’importe qui, avec une carte ou une note de frais", valeur: 3 },
     ],
   },
 ];
@@ -53,11 +53,11 @@ export type Reponses = Partial<Record<Question["cle"], string>>;
 export const HYPOTHESES = {
   comptesParPersonne: 4,
   prixCompte: 12, // € par mois et par compte
-  tauxOubli: [0.2, 0.5, 0.6, 0.75], // part des comptes restés ouverts après un départ, selon le mode d'achat
+  tauxOubli: [0.2, 0.5, 0.6, 0.75], // part des comptes restés ouverts après un départ, selon le mode d’achat
   doublonsParNiveau: [0, 1, 2, 3],
-  partLicencesDoublon: 0.3, // part de l'effectif qui utilise un outil en double
+  partLicencesDoublon: 0.3, // part de l’effectif qui utilise un outil en double
   prixLicenceDoublon: 10, // € par mois
-  tempsListe: ["environ 1 heure", "une demi-journée", "une journée", "plus d'une journée"],
+  tempsListe: ["environ 1 heure", "une demi-journée", "une journée", "plus d’une journée"],
 };
 
 function option(question: Question, id: string | undefined): Option | undefined {

@@ -1,7 +1,7 @@
 "use client";
 
-// L'état du diagnostic, gardé dans le navigateur du visiteur (localStorage).
-// Rien n'est envoyé à un serveur.
+// L’état du diagnostic, gardé dans le navigateur du visiteur (localStorage).
+// Rien n’est envoyé à un serveur.
 
 import { useSyncExternalStore } from "react";
 import type { LigneInventaire } from "./analyse";
@@ -47,7 +47,7 @@ export function modifier(maj: (e: Etat) => Etat): void {
   try {
     window.localStorage.setItem(CLE, JSON.stringify(suivant));
   } catch {
-    // Navigation privée ou stockage plein : l'état reste en mémoire pour cette visite.
+    // Navigation privée ou stockage plein : l’état reste en mémoire pour cette visite.
   }
   abonnes.forEach((f) => f());
 }
@@ -69,7 +69,7 @@ function abonner(f: () => void): () => void {
 
 const rien = () => () => {};
 
-/** [état, vrai une fois l'état du navigateur chargé] */
+/** [état, vrai une fois l’état du navigateur chargé] */
 export function useEtat(): [Etat, boolean] {
   const etat = useSyncExternalStore(abonner, lire, () => VIDE);
   const pret = useSyncExternalStore(rien, () => true, () => false);

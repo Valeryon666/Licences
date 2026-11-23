@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 
-export const PROMESSE = "Votre entreprise paie des logiciels que personne n'utilise.";
+export const PROMESSE = "Votre entreprise paie des logiciels que personne n’utilise.";
 export const DESCRIPTION =
   "Comptes de personnes parties, outils en double, renouvellements oubliés : Licences retrouve ce que votre entreprise paie pour rien. Diagnostic gratuit en 2 minutes.";
 
-/** Titre, description et aperçu de partage (Open Graph) d'une page. */
+/** Titre, description et aperçu de partage (Open Graph) d’une page. */
 export function meta({
   titre,
   description = DESCRIPTION,

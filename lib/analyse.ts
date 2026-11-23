@@ -1,4 +1,4 @@
-// Analyse de l'inventaire : coût annuel, doublons de fonction, comptes en trop,
+// Analyse de l’inventaire : coût annuel, doublons de fonction, comptes en trop,
 // comptes des personnes parties. Tout est calculé dans le navigateur.
 
 import { FONCTIONS, outil, type FonctionId, type Outil } from "./catalogue";
@@ -66,13 +66,13 @@ export function analyser(
       id: "partants",
       type: "partants",
       titre: "Des comptes de personnes parties, toujours payés",
-      detail: `${libelleDeparts ? `${libelleDeparts} départs cette année` : "Vos départs de l'année"} : environ ${pluriel(estimation.comptesOublies, "compte")} restés ouverts. À vérifier outil par outil, avec la liste de qui a quoi.`,
+      detail: `${libelleDeparts ? `${libelleDeparts} départs cette année` : "Vos départs de l’année"} : environ ${pluriel(estimation.comptesOublies, "compte")} restés ouverts. À vérifier outil par outil, avec la liste de qui a quoi.`,
       economieAn: estimation.coutComptesOublies,
       estimation: true,
     });
   }
 
-  // 2. Doublons de fonction : on garde les suites, puis l'outil qui couvre le plus d'usages, puis le plus utilisé
+  // 2. Doublons de fonction : on garde les suites, puis l’outil qui couvre le plus d’usages, puis le plus utilisé
   const retires = new Set<string>();
   for (const fonction of Object.keys(FONCTIONS) as FonctionId[]) {
     const groupe = lignes.filter((l) => l.outil.fonctions.includes(fonction) && !retires.has(l.id) && l.comptes > 0);

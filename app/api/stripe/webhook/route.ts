@@ -38,7 +38,7 @@ export async function POST(request: Request) {
         break;
     }
   } catch (e) {
-    // On répond quand même 200 : le paiement est enregistré chez Stripe, seul l'email a échoué.
+    // On répond quand même 200 : le paiement est enregistré chez Stripe, seul l’email a échoué.
     console.error(`Traitement de ${evenement.type} incomplet`, e);
   }
   return NextResponse.json({ recu: true });
@@ -61,10 +61,10 @@ async function paiementConfirme(session: Stripe.Checkout.Session) {
         "",
         "Merci, votre abonnement Licences est actif.",
         "",
-        "Votre lien d'accès personnel (gardez-le, il ouvre votre plan sur n'importe quel appareil) :",
+        "Votre lien d’accès personnel (gardez-le, il ouvre votre plan sur n’importe quel appareil) :",
         lien,
         "",
-        `Prochaine étape : répondez à cet email avec vos 3 derniers relevés bancaires (PDF ou CSV). Nous faisons l'inventaire complet de vos abonnements sous ${INVENTAIRE_OFFERT.delai}.`,
+        `Prochaine étape : répondez à cet email avec vos 3 derniers relevés bancaires (PDF ou CSV). Nous faisons l’inventaire complet de vos abonnements sous ${INVENTAIRE_OFFERT.delai}.`,
         "",
         `Satisfait ou remboursé pendant ${GARANTIE.jours} jours : répondez simplement « Remboursement » à cet email.`,
         "",
@@ -79,7 +79,7 @@ async function paiementConfirme(session: Stripe.Checkout.Session) {
     await envoyerEmail({
       a: proprietaire,
       sujet: `Nouvelle vente : ${f?.nom ?? "formule inconnue"} (${f ? `${f.prixMois} €/mois` : "?"})`,
-      texte: `Client : ${email ?? "email inconnu"}\nSession Stripe : ${session.id}\n\nÀ faire : lui envoyer la demande de relevés si ce n'est pas déjà fait, puis l'inventaire sous ${INVENTAIRE_OFFERT.delai}.`,
+      texte: `Client : ${email ?? "email inconnu"}\nSession Stripe : ${session.id}\n\nÀ faire : lui envoyer la demande de relevés si ce n’est pas déjà fait, puis l’inventaire sous ${INVENTAIRE_OFFERT.delai}.`,
     });
   }
 }
@@ -90,12 +90,12 @@ async function paiementRefuse(facture: Stripe.Invoice) {
   if (!email) return;
   await envoyerEmail({
     a: email,
-    sujet: "Votre paiement Licences n'a pas abouti",
+    sujet: "Votre paiement Licences n’a pas abouti",
     repondreA: ENTREPRISE.email ?? undefined,
     texte: [
       "Bonjour,",
       "",
-      "Le prélèvement de votre abonnement Licences n'a pas abouti. Aucun montant n'a été débité.",
+      "Le prélèvement de votre abonnement Licences n’a pas abouti. Aucun montant n’a été débité.",
       "Stripe va réessayer automatiquement dans les prochains jours. Pour mettre à jour votre carte dès maintenant :",
       `${SITE_URL}/acces`,
       "(bouton « Gérer mon abonnement »)",

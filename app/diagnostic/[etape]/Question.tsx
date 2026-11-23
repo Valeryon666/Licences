@@ -22,7 +22,7 @@ export function Question({ index }: { index: number }) {
     modifier((e) => ({
       ...e,
       reponses: { ...e.reponses, [question.cle]: id },
-      // Une nouvelle taille d'entreprise remet l'effectif exact à zéro.
+      // Une nouvelle taille d’entreprise remet l’effectif exact à zéro.
       effectifExact: question.cle === "effectif" && e.reponses.effectif !== id ? undefined : e.effectifExact,
     }));
     router.push(suivante);

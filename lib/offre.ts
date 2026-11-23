@@ -16,7 +16,7 @@ export const FORMULES: Formule[] = [
   {
     id: "equipe",
     nom: "Équipe",
-    pourQui: "Jusqu'à 20 personnes",
+    pourQui: "Jusqu’à 20 personnes",
     prixMois: 39,
     lookupKey: "licences_equipe_mensuel_v1",
   },
@@ -63,7 +63,7 @@ export const INVENTAIRE_OFFERT = {
 };
 
 export const INCLUS = [
-  "L'inventaire complet de vos abonnements, tenu à jour",
+  "L’inventaire complet de vos abonnements, tenu à jour",
   "Le coût annuel par outil et par personne",
   "Les doublons et les comptes inutilisés, repérés et chiffrés",
   "Un rappel avant chaque renouvellement annuel",

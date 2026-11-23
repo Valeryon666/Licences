@@ -4,10 +4,10 @@ import { prixStripe, stripe, stripeConfigure } from "@/lib/stripe";
 import { GARANTIE } from "@/lib/offre";
 import { SITE_URL } from "@/lib/entreprise";
 
-// Crée une session Stripe Checkout intégrée à la page (le formulaire de carte s'affiche sur /offre).
+// Crée une session Stripe Checkout intégrée à la page (le formulaire de carte s’affiche sur /offre).
 export async function POST(request: Request) {
   if (!stripeConfigure()) {
-    return NextResponse.json({ erreur: "Le paiement n'est pas encore activé." }, { status: 503 });
+    return NextResponse.json({ erreur: "Le paiement n’est pas encore activé." }, { status: 503 });
   }
 
   let corps: unknown;
@@ -43,6 +43,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ clientSecret: session.client_secret });
   } catch (e) {
     console.error("Création de la session Stripe impossible", e);
-    return NextResponse.json({ erreur: "Le paiement n'a pas pu démarrer." }, { status: 502 });
+    return NextResponse.json({ erreur: "Le paiement n’a pas pu démarrer." }, { status: 502 });
   }
 }

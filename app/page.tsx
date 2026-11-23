@@ -7,10 +7,10 @@ const BENEFICES = [
   {
     titre: "La liste complète, enfin",
     texte:
-      "Tous les abonnements de l'entreprise au même endroit, avec le coût annuel par outil et par personne. Saisis en quelques minutes, ou lus depuis vos relevés bancaires.",
+      "Tous les abonnements de l’entreprise au même endroit, avec le coût annuel par outil et par personne. Saisis en quelques minutes, ou lus depuis vos relevés bancaires.",
   },
   {
-    titre: "L'argent qui part pour rien",
+    titre: "L’argent qui part pour rien",
     texte:
       "Les comptes des personnes parties, les licences payées pour personne et les outils qui font la même chose : repérés et chiffrés en euros.",
   },
@@ -31,7 +31,7 @@ export default function Accueil() {
 
       {/* Promesse : reprise mot pour mot des vidéos */}
       <Conteneur className="grid gap-10 pt-6 pb-12 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-16 lg:pt-14 lg:pb-20">
-        <section className="apparition">
+        <section>
           <p className="montant mb-4 text-[13px] text-gris">Pour les entreprises de 10 à 100 personnes</p>
           <h1 className="font-serif text-[34px] leading-[1.12] tracking-tight text-balance sm:text-[46px] lg:text-[54px]">
             {PROMESSE}
@@ -55,7 +55,7 @@ export default function Accueil() {
           <h2 id="titre-releve" className="mt-2 font-serif text-[24px] leading-tight sm:text-[28px]">
             <Souligne>3 012 €</Souligne> par an.
             <br />
-            Personne ne l&apos;a décidé.
+            Personne ne l’a décidé.
           </h2>
           <div className="mt-5 divide-y divide-trait border-t border-trait">
             <LigneReleve
@@ -73,7 +73,7 @@ export default function Accueil() {
             <LigneReleve
               libelle="Un outil testé une fois, reconduit chaque année"
               montant="588 €"
-              detail="49 €/mois, facturés à l'année"
+              detail="49 €/mois, facturés à l’année"
               perte
             />
           </div>
@@ -82,7 +82,7 @@ export default function Accueil() {
             <span className="pointilles" aria-hidden />
             <span className="montant text-[17px] text-vermillon-texte">3 012 €</span>
           </div>
-          <p className="mt-4 text-[14px] text-gris">Chaque ligne est petite. C&apos;est pour ça que personne ne la voit.</p>
+          <p className="mt-4 text-[14px] text-gris">Chaque ligne est petite. C’est pour ça que personne ne la voit.</p>
         </section>
       </Conteneur>
 
@@ -108,12 +108,12 @@ export default function Accueil() {
       <Conteneur className="py-12 sm:py-16">
         <div className="grid gap-8 sm:grid-cols-2 sm:gap-12">
           <div>
-            <h2 className="font-serif text-[26px] leading-tight sm:text-[32px]">C&apos;est pour vous si…</h2>
+            <h2 className="font-serif text-[26px] leading-tight sm:text-[32px]">C’est pour vous si…</h2>
             <ul className="mt-6 space-y-3 text-[17px] leading-snug">
               {[
                 "vous êtes entre 10 et 100 personnes ;",
-                "personne ne s'occupe de l'informatique à plein temps ;",
-                "plusieurs personnes peuvent payer un logiciel avec une carte de l'entreprise.",
+                "personne ne s’occupe de l’informatique à plein temps ;",
+                "plusieurs personnes peuvent payer un logiciel avec une carte de l’entreprise.",
               ].map((t) => (
                 <li key={t} className="flex gap-3">
                   <Coche className="mt-1 shrink-0 text-vermillon" />
@@ -146,7 +146,7 @@ export default function Accueil() {
         </Conteneur>
       </section>
 
-      <BarreAction href="/diagnostic/1" libelle="Commencer, c'est gratuit" cibles={["cta-principal", "cta-final"]} />
+      <BarreAction href="/diagnostic/1" libelle="Commencer, c’est gratuit" cibles={["cta-principal", "cta-final"]} />
     </main>
   );
 }

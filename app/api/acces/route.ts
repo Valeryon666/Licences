@@ -3,9 +3,9 @@ import { COOKIE_ACCES, OPTIONS_COOKIE, creerJeton, lireJeton } from "@/lib/acces
 import { abonnementActif, stripe, stripeConfigure } from "@/lib/stripe";
 import { SITE_URL } from "@/lib/entreprise";
 
-// Ouvre l'accès :
-//  - ?session_id=… au retour du paiement : on interroge Stripe côté serveur (jamais l'URL seule) ;
-//  - ?t=… depuis le lien d'accès personnel, sur un autre appareil.
+// Ouvre l’accès :
+//  - ?session_id=… au retour du paiement : on interroge Stripe côté serveur (jamais l’URL seule) ;
+//  - ?t=… depuis le lien d’accès personnel, sur un autre appareil.
 export async function GET(request: NextRequest) {
   const vers = (chemin: string) => new URL(chemin, SITE_URL);
   if (!stripeConfigure() || !process.env.ACCESS_SECRET) {
@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
     reponse.cookies.set(COOKIE_ACCES, creerJeton(customerId), OPTIONS_COOKIE);
     return reponse;
   } catch (e) {
-    console.error("Ouverture de l'accès impossible", e);
+    console.error("Ouverture de l’accès impossible", e);
     return NextResponse.redirect(vers("/acces?lien=erreur"), 303);
   }
 }

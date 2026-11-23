@@ -15,7 +15,7 @@ function signature(valeur: string): string {
   return createHmac("sha256", secret()).update(valeur).digest("base64url");
 }
 
-/** Jeton d'accès personnel : l'identifiant client Stripe, signé. */
+/** Jeton d’accès personnel : l’identifiant client Stripe, signé. */
 export function creerJeton(customerId: string): string {
   return `${customerId}.${signature(customerId)}`;
 }
@@ -44,16 +44,17 @@ export type Acces =
   | { statut: "ok"; customerId: string; jeton: string }
   | { statut: "absent" | "inactif" | "indisponible" };
 
-/** Vérifie, côté serveur, le cookie d'accès puis l'abonnement auprès de Stripe. */
+/** Vérifie, côté serveur, le cookie d’accès puis l’abonnement auprès de Stripe. */
 export async function verifierAcces(): Promise<Acces> {
-  if (!stripeConfigure() || !process.env.ACCESS_SECRET) return { statut: "indisponible" };
+  // Lire les cookies en premier rend la page dynamique : l’accès est vérifié à chaque visite.
   const jeton = (await cookies()).get(COOKIE_ACCES)?.value;
+  if (!stripeConfigure() || !process.env.ACCESS_SECRET) return { statut: "indisponible" };
   const customerId = lireJeton(jeton);
   if (!customerId || !jeton) return { statut: "absent" };
   try {
     return (await abonnementActif(customerId)) ? { statut: "ok", customerId, jeton } : { statut: "inactif" };
   } catch (e) {
-    console.error("Vérification de l'abonnement impossible", e);
+    console.error("Vérification de l’abonnement impossible", e);
     return { statut: "indisponible" };
   }
 }

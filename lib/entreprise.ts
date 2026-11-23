@@ -1,6 +1,6 @@
 // Informations légales affichées dans les mentions légales, les CGV,
 // la politique de confidentialité et la garantie.
-// Une valeur à null s'affiche « [À COMPLÉTER] » sur le site.
+// Une valeur à null s’affiche « [À COMPLÉTER] » sur le site.
 
 export const ENTREPRISE = {
   marque: "Licences",
