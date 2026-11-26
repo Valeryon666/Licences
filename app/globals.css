@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/* Direction « relevé annoté » : encre bleu nuit, vermillon pour l'argent perdu, papier. */
+@theme {
+  --color-encre: #14213d;
+  --color-encre-clair: #24365e;
+  --color-vermillon: #e63b2e;
+  --color-vermillon-texte: #b8281d; /* vermillon assez foncé pour le petit texte (contraste AA) */
+  --color-vermillon-fond: #fbe9e6;
+  --color-papier: #f7f5f0;
+  --color-carte: #fffefb;
+  --color-trait: #dcd6cb;
+  --color-trait-fort: #b9b2a5;
+  --color-gris: #615c53;
+  --color-gris-clair: #eeeae2;
+
+  --font-serif: var(--font-plex-serif), Georgia, serif;
+  --font-sans: var(--font-plex-sans), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-papier);
+  color: var(--color-encre);
+  font-family: var(--font-sans);
+  font-feature-settings: "kern";
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Les montants s'alignent comme sur un relevé. */
+.montant {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+/* Ligne de relevé : libellé ........ montant */
+.ligne-releve {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.ligne-releve > .pointilles {
+  flex: 1;
+  min-width: 1rem;
+  border-bottom: 1px dotted var(--color-trait-fort);
+  transform: translateY(-0.3em);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-vermillon);
+  outline-offset: 2px;
+}
+
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .apparition {
+    animation: apparition 0.35s ease-out both;
+  }
+  @keyframes apparition {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
